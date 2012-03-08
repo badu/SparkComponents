@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="org.apache.flex.spark.components.dividers.DividedGroup"/>
+    <classEntry path="org.apache.flex.spark.components.dividers.Divider"/>
+    <classEntry path="org.apache.flex.spark.components.dividers.VDivider"/>
+    <classEntry path="org.apache.flex.spark.events.ColorChangeEvent"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
