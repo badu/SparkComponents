@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dividers:Divider
-			xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		  xmlns:s="library://ns.adobe.com/flex/spark"
-		  xmlns:dividers="org.apache.flex.spark.components.dividers.*"
-		  height="100%">
+<menu:MenuCoreItemRenderer 
+				xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:s="library://ns.adobe.com/flex/spark"
+				xmlns:mx="library://ns.adobe.com/flex/mx"
+				xmlns:menu="org.apache.flex.spark.components.menu.*" 
+				minWidth="100" minHeight="20"
+				rollOut="onRollOut(event)"
+				useHandCursor="true" mouseChildren="false" buttonMode="true">
 	<!--
 	////////////////////////////////////////////////////////////////////////////////
 	//
@@ -24,15 +27,18 @@
 	//
 	////////////////////////////////////////////////////////////////////////////////
 	-->
-	<dividers:layout>
-		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
-	</dividers:layout>
-	<s:Group>
-		<s:BitmapImage id="img" source="@Embed('assets/dividers/HDivider.png')" />
-		<s:Rect width="6" height="16">
-			<s:fill>
-				<s:SolidColor alpha="0" color="0x000000" />
-			</s:fill>
-		</s:Rect>
-	</s:Group>		
-</dividers:Divider>
+	<s:BitmapImage left="0" top="0" id="icon" source="{iconSource}" includeInLayout="{hasIcon}" visible="{hasIcon}" />
+	<s:Label id="labelDisplay" textAlign="center" height="100%" width="100%" verticalAlign="middle" />
+	
+	<fx:Script>
+		<![CDATA[	
+			protected function onRollOut(event:MouseEvent):void
+			{
+				if (event.relatedObject == null || owner.contains(event.relatedObject))
+				{
+					hovered = false;
+				}
+			}	
+		]]>
+	</fx:Script>
+</menu:MenuCoreItemRenderer>

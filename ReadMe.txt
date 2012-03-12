@@ -23,6 +23,7 @@ Spark Components
 2. ColorPicker (org.apache.flex.spark.components.colorpicker.ColorPicker)
 3. HDividerGroup (org.apache.flex.spark.components.dividers.HDividerGroup)
 4. VDividerGroup (org.apache.flex.spark.components.dividers.VDividerGroup)
+5. Menu and MenuBar (org.apache.flex.spark.components.menu.Menu and org.apache.flex.spark.components.menu.MenuBar)
 -----------------------------
 
 General notes
@@ -205,4 +206,124 @@ Usage example :
 			<s:Label text="Down" color="0xFFFFFF" top="10" left="10" />
 		</s:Group>
 </dividers:VDividerGroup>
+
+-----------------------------
+Menu and MenuBar
+-----------------------------
+
+MenuCoreItemRenderer is the core item renderer that both are using by it's subclasses
+named MenuBarItemRenderer (mxml) and MenuItemRenderer (mxml). The subclasses 
+are customizable and you can alter them as you wish.
+
+Both Menu and MenuBar extend List and have skins org.apache.flex.spark.skins.spark.MenuSkin and
+org.apache.flex.spark.skins.spark.MenuBarSkin, where MenuBarItemRenderer and
+MenuItemRenderer are declared as itemRenderers of DataGroup.
+Menu and MenuBar dispatches the following events
+	
+	[Event(name="selected", type="org.apache.flex.spark.events.MenuEvent")]
+	when a menu item gets selected
+	[Event(name="checked", type="org.apache.flex.spark.events.MenuEvent")]
+	when a menu item gets checked (menu won't close, to allow altering checks)
+	
+By altering skinning, you can use custom / different layout for Menu, however MenuCoreItemRenderer
+will check for VerticalLayout and HorizontalLayout in the owner menu, in order to display
+the popup to the right or below. If none of this are found, popup will be displayed to
+the right by default.
+	
+MenuCoreItemRenderer properties :
+isSeparator (bindable) - if the menu item is a separator (will not trigger selected)
+isCheckable (bindable) - if the menu item is a check like (for options)
+isChecked (bindable) - if the menu item is checked (changes graphics to show the user that it's checked)
+hasIcon (bindable) - changes graphics to use icon
+iconSource (bindable) - icon class (usually an [Embed])
+dataProvider (bindable) - XMLListCollection that feeds the renderer / sub-menus
+
+Usage example for MenuBar:
+-----------------------------
+1) namespace declaration xmlns:menu="org.apache.flex.spark.components.menu.*"			
+			
+2) MXML declaration (with listeners for selected and checked events)
+
+	<menu:MenuBar 
+		id="menuBarMAIN"
+		selected="onMenuChanged(event)"
+		checked="onMenuChecked(event)"
+		dataProvider="{menuDP}"
+		width="100%" height="25"
+		labelField="@label">
+		<menu:layout>
+			<s:HorizontalLayout />
+		</menu:layout>
+	</menu:MenuBar>
+			
+			
+3) dataProvider setting
+			[Bindable]
+			public var menuDP : XMLListCollection ;
+			
+			public const menudata : XML = <menuData>
+					<menu label="Menu One" 											data="five">
+						<menu label="SubMenu One">
+							<menu label="SubSubMenu One" 						data="seven2">
+								<menu label="SubSubSubMenu One" 			data="eight2" />
+								<menu label="SubSubSubMenu Two" 			data="nine2" />
+								<menu label="Checkable One" 						data="ten2" 			isCheckable="true" />
+								<menu label="Checkable Two" 						data="eleven2" 		isCheckable="true" 		isChecked="true"/>
+							</menu>
+							<menu label="SubSubMenu Two"						data="twelve" />
+						</menu>
+						<menu separator="true" />
+						<menu label="SubMenu Two">
+							<menu label="SubSubMenu One" 						data="seven">
+								<menu label="SubSubSubMenu One" 			data="eight" />
+								<menu label="SubSubSubMenu Two" 			data="nine" />
+								<menu label="Checkable One" 						data="ten" 			isCheckable="true" />
+								<menu label="Checkable Two" 						data="eleven" 	isCheckable="true" 		isChecked="true"/>
+							</menu>
+							<menu label="SubSubMenu Two"						data="twelve" />
+						</menu>
+					</menu>			
+					<menu label="Menu Two" 											data="five">
+						<menu label="SubMenu One">
+							<menu label="SubSubMenu One" 						data="seven2">
+								<menu label="SubSubSubMenu One" 			data="eight2" />
+								<menu label="SubSubSubMenu Two" 			data="nine2" />
+								<menu label="Checkable One" 						data="ten2" 			isCheckable="true" />
+								<menu label="Checkable Two" 						data="eleven2" 		isCheckable="true" 		isChecked="true"/>
+							</menu>
+							<menu label="SubSubMenu Two"						data="twelve" />
+						</menu>
+						<menu separator="true" />
+						<menu label="SubMenu Two">
+							<menu label="SubSubMenu One" 						data="seven">
+								<menu label="SubSubSubMenu One" 			data="eight" />
+								<menu label="SubSubSubMenu Two" 			data="nine" />
+								<menu label="Checkable One" 						data="ten" 			isCheckable="true" />
+								<menu label="Checkable Two" 						data="eleven" 	isCheckable="true" 		isChecked="true"/>
+							</menu>
+							<menu label="SubSubMenu Two"						data="twelve" />
+						</menu>
+					</menu>				
+				</menuData>;
+				
+				menuDP = new XMLListCollection(menudata.menu);
+
+4) Handlers of events :
+
+			protected function onMenuChanged(event:MenuEvent):void
+			{
+				trace("======================================");
+				trace("Selected : "+event.item.@label);				
+				trace("======================================");
+			}
+			protected function onMenuChecked(event:MenuEvent):void
+			{
+				trace("======================================");
+				trace("Item : "+event.item.@label+" is now "+event.item.@isChecked);
+				trace("======================================");
+			}
+
+Menu usage example
+-----------------------------
+Works in the same way. You can test with a button which when pressed to make the menu visible.
 
