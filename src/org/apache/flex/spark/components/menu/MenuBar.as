@@ -51,6 +51,9 @@ package org.apache.flex.spark.components.menu
     /**
 	 * Note : works with both Horizontal and Vertical Layouts
 	 */
+	/**
+	 * @author Bogdan Dinu (http://www.badu.ro)
+	 */
     public class MenuBar extends List
     {		
 		/**

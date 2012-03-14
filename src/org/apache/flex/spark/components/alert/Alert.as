@@ -111,8 +111,9 @@ package org.apache.flex.spark.components.alert
 	 *  @playerversion AIR 2.5
 	 *  @productversion Flex 4.5
 	 */
-	
-	
+	/**
+	 * @author Bogdan Dinu (http://www.badu.ro)
+	 */	
 	public class Alert extends Panel
 	{
 		[SkinPart(required="false")]

@@ -26,6 +26,7 @@
 	//  limitations under the License.
 	//
 	////////////////////////////////////////////////////////////////////////////////
+	@author Bogdan Dinu (http://www.badu.ro)
 	-->
 	<s:BitmapImage left="0" top="0" id="icon" source="{iconSource}" includeInLayout="{hasIcon}" visible="{hasIcon}" />
 	<s:Label id="labelDisplay" textAlign="center" height="100%" width="100%" verticalAlign="middle" />

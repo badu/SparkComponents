@@ -31,7 +31,9 @@ package org.apache.flex.spark.components.dividers
 	[Exclude(name="layout", kind="property")]
 	[DefaultProperty("children")]
 	[ResourceBundle("Dividers")]
-	
+	/**
+	 * @author Bogdan Dinu (http://www.badu.ro)
+	 */
 	public class DividedGroup extends Group
 	{
 		public var dividers : Array;

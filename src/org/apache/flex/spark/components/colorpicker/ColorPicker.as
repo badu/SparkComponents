@@ -63,6 +63,9 @@ package org.apache.flex.spark.components.colorpicker
 	 *  Subclass DropDownList and make it work like a ColorPicker
 	 *   
 	 */
+	/**
+	 * @author Bogdan Dinu (http://www.badu.ro)
+	 */
 	public class ColorPicker extends ComboBox
 	{		
 		/**

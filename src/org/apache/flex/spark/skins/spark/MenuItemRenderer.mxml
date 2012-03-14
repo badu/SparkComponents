@@ -26,6 +26,7 @@
 	//  limitations under the License.
 	//
 	////////////////////////////////////////////////////////////////////////////////
+	@author Bogdan Dinu (http://www.badu.ro)
 	-->
 	<s:Group visible="{!isSeparator}" includeInLayout="{!isSeparator}" left="0" right="0" height="100%">
 		<s:BitmapImage left="0" top="0" id="icon" source="{iconSource}" includeInLayout="{hasIcon}" visible="{hasIcon}" />

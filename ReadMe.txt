@@ -24,6 +24,7 @@ Spark Components
 3. HDividerGroup (org.apache.flex.spark.components.dividers.HDividerGroup)
 4. VDividerGroup (org.apache.flex.spark.components.dividers.VDividerGroup)
 5. Menu and MenuBar (org.apache.flex.spark.components.menu.Menu and org.apache.flex.spark.components.menu.MenuBar)
+6. ProgressBar (org.apache.flex.spark.components.progressBar.ProgressBar)
 -----------------------------
 
 General notes
@@ -327,3 +328,48 @@ Menu usage example
 -----------------------------
 Works in the same way. You can test with a button which when pressed to make the menu visible.
 
+-----------------------------
+ProgressBar component info
+-----------------------------
+
+ProgressBar component is skinnable and very simple to use. By altering it's properties named totalProgress
+and currentProgress , the progress bar will update the bar size to the percent calculated between
+those too. In case you don't want to display label percentual, displayPercents (Boolean) property
+has to be set to false. If this property is set to false, suffix property allows to customize the label
+which will display the value of currentProgress, "/" character, totalProgress and the suffix.
+
+The component supports labelFunction, just in case you want to handle what label displays.
+
+The direction property is used inside the skin. If it's set to 'right' it will make the bar grow from
+left to right (default), if set to 'left', the bar will grow from right to left.
+
+To allow more flexibility, the ProgressBar component is not going to have a source property,
+like the MX component had, allowing developer to do whatever it wants.
+
+Basic usage example :
+-----------------------------
+(For testing all features)
+
+1) Namespace xmlns:progressBar="org.apache.flex.spark.components.progressBar.*"
+
+2) The progress bar's value will be set by a hslider (simpliest test possible)
+			<progressBar:ProgressBar id="progress" 
+									 width="300" height="20" top="30" 
+									 totalProgress="100" 
+									 labelFunction="progressFunction"
+									 currentProgress="{slider.value}"
+									 displayPercents="false"
+									 suffix="bytes"
+									 direction="right"
+									 />
+			<s:HSlider id="slider" minimum="0" maximum="100" top="60" showDataTip="false" />  
+
+3) where labelFunction is :
+
+			public function progressFunction():void
+			{
+				if (progress.percentDisplay)
+				{
+					progress.percentDisplay.text = progress.currentProgress +" out of "+ progress.totalProgress;
+				}
+			}

@@ -39,6 +39,9 @@ package org.apache.flex.spark.components.menu
 	 * 
 	 */
 	[States("normal", "hovered", "selected")]
+	/**
+	 * @author Bogdan Dinu (http://www.badu.ro)
+	 */
 	public class MenuCoreItemRenderer extends ItemRenderer implements IListItemRenderer
 	{			
 		/**

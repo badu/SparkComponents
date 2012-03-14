@@ -20,10 +20,8 @@ package org.apache.flex.spark.utils
 {
 	import mx.collections.ArrayList;
 	import mx.collections.IList;
-	
-	
 	/**
-	 *  @private
+	 *  
 	 */
 	public class ColorPickerUtil
 	{

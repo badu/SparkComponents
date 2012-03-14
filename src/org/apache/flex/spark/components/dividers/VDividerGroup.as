@@ -30,6 +30,9 @@ package org.apache.flex.spark.components.dividers
 	 *  @playerversion AIR 2.5
 	 *  @productversion Flex 4.5
 	 */
+	/**
+	 * @author Bogdan Dinu (http://www.badu.ro)
+	 */
 	public class VDividerGroup extends DividedGroup
 	{
 		private var _onStartDragFirstNeighbourHeight : Number;

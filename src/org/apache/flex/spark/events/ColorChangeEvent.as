@@ -19,7 +19,9 @@
 package org.apache.flex.spark.events
 {
 	import flash.events.Event;
-	
+	/**
+	 * @author Bogdan Dinu (http://www.badu.ro)
+	 */
 	public class ColorChangeEvent extends Event
 	{
 		public static const CHOOSE:String = "choose";
