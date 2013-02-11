@@ -16,6 +16,11 @@
 //  limitations under the License.
 //
 ////////////////////////////////////////////////////////////////////////////////
+IMPORTANT :
+All these components were donated to Apache Flex SDK and the latest versions (including bug fixing),
+are now here : 
+http://svn.apache.org/viewvc/flex/sdk/branches/develop/frameworks/projects/experimental/
+This repository is deprecated!
 
 Spark Components
 -----------------------------
